@@ -1,0 +1,7 @@
+client_id: example-app
+client_secret: env:EXAMPLE_APP_SECRET
+redirect_url: http://127.0.0.1:5555/callback
+scropes:
+  - profile
+  - email
+  - groups
