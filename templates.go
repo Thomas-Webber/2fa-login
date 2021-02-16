@@ -40,7 +40,7 @@ input { display: table-cell; }
   </body>
 </html>`))
 
-func renderIndex(w http.ResponseWriter) {
+func RenderIndex(w http.ResponseWriter) {
 	renderTemplate(w, indexTmpl, nil)
 }
 
@@ -80,7 +80,7 @@ pre {
 </html>
 `))
 
-func renderToken(w http.ResponseWriter, redirectURL, idToken, accessToken, refreshToken, claims string) {
+func RenderToken(w http.ResponseWriter, redirectURL, idToken, accessToken, refreshToken, claims string) {
 	renderTemplate(w, tokenTmpl, tokenTmplData{
 		IDToken:      idToken,
 		AccessToken:  accessToken,

@@ -1,0 +1,47 @@
+issuer: "http://127.0.0.1:5556/dex"
+
+storage:
+  type: sqlite3
+  config:
+    file: /var/dex/dex.db
+
+web:
+  http: 0.0.0.0:5556
+
+grpc:
+  addr: 127.0.0.1:5557
+
+telemetry:
+  http: 0.0.0.0:5558
+
+expiry:
+  deviceRequests: 5m
+  signingKeys: 6h
+  idTokens: 24h
+  authRequests: 24h
+
+logger:
+  level: info
+  format: text
+
+oauth2:
+  responseTypes: [code]
+  skipApprovalScreen: true
+  alwaysShowLoginScreen: false
+
+enablePasswordDB: true
+
+staticClients:
+- id: example-app
+  secret: example-app-secret
+  name: 'Example App'
+  # Where the app will be running.
+  redirectURIs:
+  - 'http://127.0.0.1:5555/callback'
+
+connectors:
+
+staticPasswords:
+- email: "admin@netis.ai"
+  hash: "$2y$12$LVy9.hdCsPLvWaFj1CLhfeGmXzBnY983pd6MZrQWykDOrAEgVdnIe" # "Pharmasutra42$"
+  username: "admin"

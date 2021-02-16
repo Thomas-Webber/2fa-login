@@ -200,7 +200,7 @@ func cmd() *cobra.Command {
 	c.Flags().StringVar(&tlsCert, "tls-cert", "", "X509 cert file to present when serving HTTPS.")
 	c.Flags().StringVar(&tlsKey, "tls-key", "", "Private key for the HTTPS cert.")
 	c.Flags().StringVar(&rootCAs, "issuer-root-ca", "", "Root certificate authorities for the issuer. Defaults to host certs.")
-	c.Flags().BoolVar(&debug, "debug", false, "Print all request and responses from the OpenID Connect issuer.")
+	c.Flags().BoolVar(&debug, "debug", true, "Print all request and responses from the OpenID Connect issuer.")
 	return &c
 }
 
@@ -212,7 +212,7 @@ func main() {
 }
 
 func (a *app) handleIndex(w http.ResponseWriter, r *http.Request) {
-	renderIndex(w)
+	RenderIndex(w)
 }
 
 func (a *app) oauth2Config(scopes []string) *oauth2.Config {
@@ -336,5 +336,5 @@ func (a *app) handleCallback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	renderToken(w, a.redirectURI, rawIDToken, accessToken, token.RefreshToken, buff.String())
+	RenderToken(w, a.redirectURI, rawIDToken, accessToken, token.RefreshToken, buff.String())
 }
